@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  extension: 1
+  name: MyString
+  email: MyString
+  averageScore: 1
+  isStarPlayer: false
+  wins: 1
+  losses: 1
+  draws: 1
+
+two:
+  extension: 1
+  name: MyString
+  email: MyString
+  averageScore: 1
+  isStarPlayer: false
+  wins: 1
+  losses: 1
+  draws: 1
