@@ -11,27 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004003544) do
+ActiveRecord::Schema.define(version: 20141004125459) do
 
   create_table "games", force: true do |t|
-    t.integer  "roundScore"
-    t.integer  "totalScore"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "player_1_round_score"
+    t.integer  "player_1_total_score"
+    t.integer  "player_2_round_score"
+    t.integer  "player_2_total_score"
+  end
+
+  create_table "games_users", force: true do |t|
+    t.integer "game_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: true do |t|
     t.integer  "extension"
     t.string   "name"
     t.string   "email"
-    t.integer  "averageScore"
-    t.boolean  "isStarPlayer"
     t.integer  "wins"
     t.integer  "losses"
     t.integer  "draws"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "average_score"
+    t.boolean  "is_star_player"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
