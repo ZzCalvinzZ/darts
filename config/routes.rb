@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  post 'play_game/start_game'
+
+  get 'play_game/end_game'
+
   get 'login/index'
   resources :games
 
