@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004125459) do
+ActiveRecord::Schema.define(version: 20141004122533) do
 
   create_table "games", force: true do |t|
+    t.integer  "player_1_round_score", default: 0
+    t.integer  "player_2_round_score", default: 0
+    t.integer  "player_1_total_score", default: 0
+    t.integer  "player_2_total_score", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "player_1_round_score"
-    t.integer  "player_1_total_score"
-    t.integer  "player_2_round_score"
-    t.integer  "player_2_total_score"
   end
 
   create_table "games_users", force: true do |t|
@@ -31,13 +31,13 @@ ActiveRecord::Schema.define(version: 20141004125459) do
     t.integer  "extension"
     t.string   "name"
     t.string   "email"
-    t.integer  "wins"
-    t.integer  "losses"
-    t.integer  "draws"
+    t.integer  "average_score"
+    t.boolean  "is_star_player", default: false
+    t.integer  "wins",           default: 0
+    t.integer  "losses",         default: 0
+    t.integer  "draws",          default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "average_score"
-    t.boolean  "is_star_player"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  post 'play_game/start_game'
-
+  post 'play_game', to: 'play_game#start_game'
+  get 'play_game', to: 'play_game#update_score'
   get 'play_game/end_game'
 
   get 'login/index'

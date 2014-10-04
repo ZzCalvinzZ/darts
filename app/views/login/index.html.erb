@@ -1,7 +1,7 @@
 <h1>Darts App</h1>
 <div>
   <p>Enter you Extension, Name, or email to play!</p>
-  <%= form_tag("/play_game/start_game", method: "post") do %>
+  <%= form_tag("/play_game", method: "post") do %>
     <%= label_tag(:p1_extension, "Player 1:") %>
     <%= text_field_tag(:p1_extension) %>
     <%= label_tag(:p2_extension, "Player 2:") %>
