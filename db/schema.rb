@@ -14,8 +14,7 @@
 ActiveRecord::Schema.define(version: 20141004122533) do
 
   create_table "games", force: true do |t|
-    t.integer  "player_1_round_score", default: 0
-    t.integer  "player_2_round_score", default: 0
+    t.integer  "round_count",          default: 0
     t.integer  "player_1_total_score", default: 0
     t.integer  "player_2_total_score", default: 0
     t.datetime "created_at"

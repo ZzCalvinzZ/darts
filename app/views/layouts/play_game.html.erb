@@ -1,6 +1,8 @@
+
+<%= stylesheet_link_tag "play_game" %>
 <h1>Darts Game #<%= @game.id %></h1>
 
-<div id='leftcolumn'>
+<div id='leftcolumn' class ='<%= @player_1_turn %>'>
   <div>
     <h1> <%= @player_1.name  %></h1>
     <h2> Score: <%= @game.player_1_total_score %></h2>
@@ -9,11 +11,11 @@
   <div>
     <%= form_tag("play_game", method: "get") do %>
       <%= label_tag(:p1_score_1, "Dart 1:") %>
-      <%= number_field_tag(:p1_score_1) %>
+      <%= number_field_tag(:p1_score_1, 0,max: 180) %>
       <%= label_tag(:p1_score_2, "Dart 2:") %>
-      <%= number_field_tag(:p1_score_2) %>
+      <%= number_field_tag(:p1_score_2, 0,max: 180) %>
       <%= label_tag(:p1_score_3, "Dart 2:") %>
-      <%= number_field_tag(:p1_score_3) %>
+      <%= number_field_tag(:p1_score_3, 0, max: 180) %>
       <%= submit_tag("Submit round score") %>
     <% end %>
   </div>
@@ -27,20 +29,20 @@
 
 
 
-<div id = 'rightcolumn'>
+<div id = 'rightcolumn' class ='<%= @player_2_turn %>'>
   <div>
     <h1> <%= @player_2.name  %></h1>
     <h2> Score: <%= @game.player_2_total_score %></h2>
   </div>
 
   <div>
-    <%= form_tag("play_game/update_score", method: "get") do %>
+    <%= form_tag("play_game", method: "get") do %>
       <%= label_tag(:p2_score_1, "Dart 1:") %>
-      <%= number_field_tag(:p2_score_1) %>
+      <%= number_field_tag(:p2_score_1, 0, max: 180) %>
       <%= label_tag(:p2_score_2, "Dart 2:") %>
-      <%= number_field_tag(:p2_score_2) %>
+      <%= number_field_tag(:p2_score_2, 0, max: 180) %>
       <%= label_tag(:p2_score_3, "Dart 2:") %>
-      <%= number_field_tag(:p2_score_3) %>
+      <%= number_field_tag(:p2_score_3, 0, max: 180) %>
       <%= submit_tag("Submit round score") %>
     <% end %>
   </div>
