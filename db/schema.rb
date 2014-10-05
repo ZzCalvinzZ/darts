@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004122533) do
+ActiveRecord::Schema.define(version: 20141005133644) do
 
   create_table "games", force: true do |t|
     t.integer  "round_count",          default: 0
@@ -26,17 +26,27 @@ ActiveRecord::Schema.define(version: 20141004122533) do
     t.integer "user_id"
   end
 
+  create_table "historical_scores", force: true do |t|
+    t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "historical_scores", ["user_id"], name: "index_user_id"
+
   create_table "users", force: true do |t|
     t.integer  "extension"
     t.string   "name"
     t.string   "email"
-    t.integer  "average_score"
-    t.boolean  "is_star_player", default: false
-    t.integer  "wins",           default: 0
-    t.integer  "losses",         default: 0
-    t.integer  "draws",          default: 0
+    t.integer  "average_score",      default: 0
+    t.boolean  "is_star_player",     default: false
+    t.integer  "wins",               default: 0
+    t.integer  "losses",             default: 0
+    t.integer  "draws",              default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "current_game_score", default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

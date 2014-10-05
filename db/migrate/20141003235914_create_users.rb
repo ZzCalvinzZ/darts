@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :extension
       t.string :name
       t.string :email
-      t.integer :average_score
+      t.integer :average_score, :default => '0'
       t.boolean :is_star_player, :default => false
       t.integer :wins, :default => '0'
       t.integer :losses, :default => '0'

@@ -1,2 +1,8 @@
-<h1><%=  %> Wins with a score of </h1>
-<p>Find me in app/views/play_game/end_game.html.erb</p>
+<div>
+  <h1><%= @winning_statement%> </h1>
+  <h1><%= if !@tie_game then @losing_statement end %> </h1>
+</div>
+
+<div>
+  <%= link_to "Start a new Game!", "/" %>
+</div>
