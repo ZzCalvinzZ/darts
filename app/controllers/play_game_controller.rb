@@ -1,20 +1,28 @@
 class PlayGameController < ApplicationController
   layout "play_game", except: [:end_game]
   def start_game
-    @player_1 = User.find_by(extension: params[:p1_extension])
-    @player_2 = User.find_by(extension: params[:p2_extension])
-    @game = Game.new() do |game|
-      game.users << @player_1
-      game.users << @player_2
-      game.save!
+
+    begin
+      @player_1 = User.find_by(extension: params[:p1_input])
+      @player_2 = User.find_by(extension: params[:p2_input])
+
+
+      @game = Game.new() do |game|
+        game.users << @player_1
+        game.users << @player_2
+        game.save!
+      end
+
+      session[:player_1_id] = @player_1.id
+      session[:player_2_id] = @player_2.id
+      session[:game_id] = @game.id
+
+      @player_1_turn = 'yourturn'
+      @player_2_turn = 'notyourturn'
+    rescue => e
+      flash[:notice] = "One of the extensions you entered are incorrect"
+      redirect_to '/login/index'
     end
-    session[:player_1_id] = @player_1.id
-    session[:player_2_id] = @player_2.id
-    session[:game_id] = @game.id
-
-    @player_1_turn = 'yourturn'
-    @player_2_turn = 'notyourturn'
-
   end
 
   def update_score
@@ -83,17 +91,15 @@ class PlayGameController < ApplicationController
       end
       @player_2.average_score /= @score_count
 
-      #update the players wins/losses
-      @winning_player.wins += 1
-      @losing_player.losses += 1
-
-
       #update draws and set output messages
       if (@tie_game)
         @player_1.draws += 1
         @player_2.draws += 1
         @winning_statement = "The game is a draw with both players achieving #{@player_1.current_game_score}"
       else
+        #update the players wins/losses
+        @winning_player.wins += 1
+        @losing_player.losses += 1
         @winning_statement = "#{@winning_player.name} wins with a score of #{@winning_player.current_game_score}"
         @losing_statement =  "#{@losing_player.name} loses with a score of #{@losing_player.current_game_score}"
       end

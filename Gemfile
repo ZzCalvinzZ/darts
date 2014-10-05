@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 gem 'rails', '4.1.4'
 
@@ -56,6 +57,7 @@ gem 'spring',        group: :development
 
 gem 'rails_admin', '0.6.3'
 
+gem 'rails-assets-jquery-validation'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
