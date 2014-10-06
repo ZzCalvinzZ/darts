@@ -81,13 +81,14 @@ class PlayGameController < ApplicationController
       #update the players average score
       @player_1.historical_scores.each_with_index do |historical_scores, index|
         @player_1.average_score += historical_scores.score
-        @score_count = index
+        @score_count = index + 1
       end
-      @player_1.average_score /= @score_count
+
+      @player_1.average_score /= @score_count 
 
       @player_2.historical_scores.each_with_index do |historical_scores, index|
         @player_2.average_score += historical_scores.score
-        @score_count = index
+        @score_count = index + 1
       end
       @player_2.average_score /= @score_count
 
