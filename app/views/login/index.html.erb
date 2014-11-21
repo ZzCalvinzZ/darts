@@ -2,7 +2,7 @@
   <div class="small-6 small-centered columns">
     <h1>Darts App</h1>
     <div>
-      <p id="p-ext">Enter your Extension to play!</p>
+      <p id="p-ext">Enter your Extension to play! (1111, 2222, 3333, 4444, 5555, 6666, 7777, 8888, 9999)</p>
       <%= form_tag("/play_game", method: "post") do %>
         <%= label_tag(:p1_input, "Player 1:") %>
         <%= number_field_tag :p1_input, nil, :required => true, :max => "9999" %>
