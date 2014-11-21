@@ -1,24 +1,39 @@
-<h1>Darts App</h1>
-<div>
-  <p>Enter your Extension to play!</p>
-  <%= form_tag("/play_game", method: "post") do %>
-    <%= label_tag(:p1_input, "Player 1:") %>
-    <%= number_field_tag :p1_input, nil, :required => true, :max => "9999" %>
-    <%= label_tag(:p2_input, "Player 2:") %>
-    <%= number_field_tag :p2_input, nil, :required => true, :max => "9999" %>
-    <%= submit_tag("Play Darts!") %>
-  <% end %>
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <h1>Darts App</h1>
+    <div>
+      <p id="p-ext">Enter your Extension to play!</p>
+      <%= form_tag("/play_game", method: "post") do %>
+        <%= label_tag(:p1_input, "Player 1:") %>
+        <%= number_field_tag :p1_input, nil, :required => true, :max => "9999" %>
+        <%= label_tag(:p2_input, "Player 2:") %>
+        <%= number_field_tag :p2_input, nil, :required => true, :max => "9999" %>
+        <div class="button-holder">
+          <%= submit_tag("Play Darts!") %>
+        </div>
+      <% end %>
+    </div>
+
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+  </div>
 </div>
 
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
-<div>
-  <h1>Top Scores</h1>
-  <h3>Average Score</h3><h3>Player</h3>
-  <% @users.each do |user| %>
-    <h3> <%= user.average_score %> </h3>
-    <h3> <%= user.name %> </h3>
-  <% end %> 
+<div id="scoreboard" class="row">
+  <div class="centered" class="small-6 small-centered columns">
+    <table>
+      <h1>Top Scores</h1>
+      <tr>
+        <th><h2>Average Score</h2></th>
+        <th><h2>Player</h2></th>
+      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td><h3> <%= user.average_score %></h3></td>
+          <td><h3> <%= user.name %> </h3></td>
+        </tr>
+      <% end %> 
+    </table>
+  </div>
 </div>

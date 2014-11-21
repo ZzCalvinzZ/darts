@@ -58,6 +58,7 @@ gem 'spring',        group: :development
 gem 'rails_admin', '0.6.3'
 
 gem 'rails-assets-jquery-validation'
+gem 'foundation-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
